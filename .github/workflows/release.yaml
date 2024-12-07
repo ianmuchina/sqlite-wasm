@@ -26,6 +26,7 @@ jobs:
           name: Nightly
           body_path: body.txt
           fail_on_unmatched_files: true
+          tag_name: latest
           make_latest: true
           repository: ianmuchina/sqlite-wasm
           files: |
