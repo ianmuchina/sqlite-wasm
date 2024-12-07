@@ -28,10 +28,10 @@ RUN source /build/emsdk/emsdk_env.sh && \
 
 # Compile sqlite-wasm
 WORKDIR /build/sqlite/ext/wasm
-RUN make o2 barebones=1 || true
+RUN source /build/emsdk/emsdk_env.sh && make o2 barebones=1 || true
 
 # Minify sqlite wasm
 COPY build/minify.* /build/sqlite/ext/wasm/
-RUN ./minify.sh
-RUN esbuild output/sqlite3.js --minify --outfile=output/sqlite3.min.js
-RUN rm -fr output/sqlite3-api.js
+RUN ./minify.sh && \
+    esbuild jswasm/sqlite3.js --minify --outfile=jswasm/sqlite3.min.js && \
+    rm -fr jswasm/sqlite3-api.js
