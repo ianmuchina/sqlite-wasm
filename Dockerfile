@@ -4,7 +4,7 @@ SHELL ["/bin/bash", "-c"]
 # Install debian dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    ca-certificates git nodejs bash python3 tcl build-essential wabt coreutils grep && \
+    ca-certificates git nodejs bash python3 tcl build-essential esbuild wabt coreutils grep && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Clone Git repos
@@ -33,3 +33,5 @@ RUN make o2 barebones=1 || true
 # Minify sqlite wasm
 COPY build/minify.* /build/sqlite/ext/wasm/
 RUN ./minify.sh
+RUN esbuild output/sqlite3.js --minify --outfile=output/sqlite3.min.js
+RUN rm -fr output/sqlite3-api.js

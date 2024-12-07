@@ -11,12 +11,6 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v4
-        with:
-          node-version: latest
-
-      - name: Install esbuild
-        run: npm i -g esbuild
 
       - name: Build sqlite3.js
         run: sudo docker build -t builder .
@@ -24,13 +18,10 @@ jobs:
       - name: Copy build outputs from container to local filesystem
         run: sudo docker run --rm -v "$PWD/output/:/build/output/" builder bash -c 'cp /build/sqlite/ext/wasm/jswasm/* /build/output/'
 
-      - name: remove legal comments
-        run: esbuild output/sqlite3.js --minify --outfile=output/sqlite3.min.js  && rm output/sqlite3-api.js
       - run: cat output/sqlite3.js | grep -o 'SQLITE_VERSION .*\|SQLITE_SOURCE_ID.*'| sort -ur >> body.txt
 
       - name: Release
         uses: softprops/action-gh-release@v2.1.0
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           name: Nightly
           body_path: body.txt
