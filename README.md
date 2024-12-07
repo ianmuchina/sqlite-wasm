@@ -1,6 +1,6 @@
 # sqlite-wasm
 
-[![.github/workflows/workflow.yml](https://github.com/ianmuchina/sqlite-wasm/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/ianmuchina/sqlite-wasm/actions/workflows/workflow.yml)
+[![Release](https://github.com/ianmuchina/sqlite-wasm/actions/workflows/release.yaml/badge.svg)](https://github.com/ianmuchina/sqlite-wasm/actions/workflows/release.yaml)
 
 Nightly builds of
 [sqlite-wasm](https://github.com/sqlite/sqlite/blob/master/ext/wasm/README.md)
