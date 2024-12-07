@@ -1,0 +1,24 @@
+From 145b53ff334cc0392066a021babb18018a4925b6 Mon Sep 17 00:00:00 2001
+From: Ian Muchina <noreply@ianmuchina.com>
+Date: Mon, 2 Dec 2024 08:07:37 +0300
+Subject: [PATCH] add -sSINGLE_FILE=1 to emcc flags
+
+---
+ ext/wasm/GNUmakefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ext/wasm/GNUmakefile b/ext/wasm/GNUmakefile
+index 19ad75990..4fd9f041d 100644
+--- a/ext/wasm/GNUmakefile
++++ b/ext/wasm/GNUmakefile
+@@ -632,6 +632,7 @@ emcc.jsflags += $(emcc.exportedRuntimeMethods)
+ emcc.jsflags += -sUSE_CLOSURE_COMPILER=0
+ emcc.jsflags += -sIMPORTED_MEMORY
+ emcc.jsflags += -sSTRICT_JS=0
++emcc.jsflags += -sSINGLE_FILE=1
+ # STRICT_JS disabled due to:
+ #   https://github.com/emscripten-core/emscripten/issues/18610
+ # TL;DR: does not work with MODULARIZE or EXPORT_ES6 as of version
+-- 
+2.39.5
+
