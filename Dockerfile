@@ -4,7 +4,7 @@ SHELL ["/bin/bash", "-c"]
 # Install debian dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    git nodejs bash python3 tcl build-essential wabt coreutils grep && \
+    ca-certificates git nodejs bash python3 tcl build-essential wabt coreutils grep && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Clone Git repos
