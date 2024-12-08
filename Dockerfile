@@ -28,7 +28,7 @@ RUN source /build/emsdk/emsdk_env.sh && \
 
 # Compile sqlite-wasm
 WORKDIR /build/sqlite/ext/wasm
-RUN source /build/emsdk/emsdk_env.sh && make o2 barebones=1 || true
+RUN source /build/emsdk/emsdk_env.sh && make o2 || true
 
 # Minify sqlite wasm
 COPY build/minify.* /build/sqlite/ext/wasm/
